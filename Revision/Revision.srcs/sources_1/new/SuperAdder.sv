@@ -24,7 +24,8 @@ module SuperAdder(
         input wire [3:0] A,
         input wire [3:0] B,
         input wire carry,
-        output wire [3:0] result
+        output wire [3:0] result,
+        output wire nextcarry
     );
     
     wire [3:0] G;
@@ -46,12 +47,10 @@ module SuperAdder(
     assign C[3] = G[3] | (P[3] & G[2]) | (P[3] & P[2] & G[1]) |
     (P[3] & P[2] & P[1] & G[0]) | (P[3] & P[2] & P[1] & P[0] & carry);
     
-    genvar j;
-    generate 
-        for (j = 0; j < 4; j = j + 1) begin: sum
-            
-        end
-    endgenerate
-    
+    assign result[0] = A[0] ^ B[0] ^ carry;
+    assign result[1] = A[1] ^ B[1] ^ C[0];
+    assign result[2] = A[2] ^ B[2] ^ C[1];
+    assign result[3] = A[3] ^ B[3] ^ C[2];
+    assign nextcarry = C[3];
     
 endmodule

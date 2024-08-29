@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/Digitial_Logic_Lab/Revision/Revision.runs/synth_1'
+HD_PWD='D:/Digital-logic-experiments/Revision/Revision.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log Decoder1.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Decoder1.tcl
+EAStep vivado -log SuperAdder.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source SuperAdder.tcl

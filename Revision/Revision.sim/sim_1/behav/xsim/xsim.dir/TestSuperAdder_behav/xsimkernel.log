@@ -1,0 +1,4 @@
+Running: xsim.dir/TestSuperAdder_behav/xsimk.exe -simmode gui -wdb TestSuperAdder_behav.wdb -simrunnum 0 -socket 64889
+Design successfully loaded
+Design Loading Memory Usage: 7008 KB (Peak: 7008 KB)
+Design Loading CPU Usage: 0 ms
