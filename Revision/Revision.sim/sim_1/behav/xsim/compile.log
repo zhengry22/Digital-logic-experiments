@@ -1,6 +1,4 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/Decoder.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module Decoder1
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SuperAdder.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module SuperAdder
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestSuperAdder.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module TestSuperAdder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/Divider.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Divider
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestDivider.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TestDivider
