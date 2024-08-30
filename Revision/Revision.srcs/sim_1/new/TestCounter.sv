@@ -23,6 +23,8 @@
 module TestCounter;
 
 reg clk = 1'b0;
+reg [4:0] div = 4;
+reg div_clk;
 reg switch = 1;
 reg rst = 1;
 reg [3:0] low;
@@ -61,8 +63,14 @@ initial begin
     end
 end
 
-Counter cnt(
+Divider dv(
     .clk(clk),
+    .div(div),
+    .div_clk(div_clk)
+);
+
+Counter cnt(
+    .clk(div_clk),
     .switch(switch),
     .rst(rst),
     .low(low),

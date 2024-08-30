@@ -1,6 +1,7 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib  \
 "../../../../Revision.srcs/sources_1/new/Counter.sv" \
+"../../../../Revision.srcs/sources_1/new/Divider.sv" \
 "../../../../Revision.srcs/sim_1/new/TestCounter.sv" \
 
 # compile glbl module
