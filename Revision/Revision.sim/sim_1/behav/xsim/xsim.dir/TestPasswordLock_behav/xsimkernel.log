@@ -1,0 +1,4 @@
+Running: xsim.dir/TestPasswordLock_behav/xsimk.exe -simmode gui -wdb TestPasswordLock_behav.wdb -simrunnum 0 -socket 52166
+Design successfully loaded
+Design Loading Memory Usage: 6980 KB (Peak: 6980 KB)
+Design Loading CPU Usage: 0 ms

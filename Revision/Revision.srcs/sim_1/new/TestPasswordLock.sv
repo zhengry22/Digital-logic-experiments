@@ -46,14 +46,14 @@ module TestPasswordLock;
 
     // Instantiate the PasswordLock module
     PasswordLock dut (
-        .clk(clk),
-        .rst(rst),
-        .code(code),
-        .mode(mode),
-        .right(right),
-        .set(set),
-        .wrong(wrong),
-        .alarm(alarm)
+        .CLK(clk),
+        .RST(rst),
+        .Code(code),
+        .Mode(mode),
+        .Unlock(right),
+        .Set(set),
+        .Err(wrong),
+        .Alarm(alarm)
     );
 
     // Clock generation

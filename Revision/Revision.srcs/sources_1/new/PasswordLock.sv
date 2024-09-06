@@ -21,146 +21,141 @@
 
 
 module PasswordLock(
-    input wire clk,
-    input wire rst,
-    input wire [3:0] code,
-    input wire mode,
-    output reg right = 0,
-    output reg set = 0,
-    output reg wrong = 0,
-    output reg alarm = 0 // Wrong in 3 consecutive attempts causes alarm to light up
-    );
-    
-    /* Define the states for fsm */
-    typedef enum {STATE_0, STATE_1, STATE_2, STATE_3, STATE_4} state_type; 
+    input wire CLK,
+    input wire RST,
+    input reg [3:0] Code, 
+    input reg Mode, // 0 for set, 1 for verify 
+    output reg Set,
+    output reg Unlock,
+    output reg Err,
+    output reg Alarm // If wrong for 3 times in a row then Alarm will be on
+);
+
+    typedef enum {STATE_0, STATE_1, STATE_2, STATE_3, STATE_4} state_type;
     typedef enum {ERR_0, ERR_1, ERR_2, ERR_3} err_type;
-    state_type my_state = STATE_0;
-    err_type my_err = ERR_0;
-    
-    /* Define the originial password as 1234 */
-    reg [15:0] password = 16'h1234;
+    state_type state, next_state;
+    err_type err, next_err;
+    reg [15:0] real_password;
+    reg [15:0] input_password;
     reg [15:0] superpassword = 16'h6385;
-    reg [15:0] verify = 16'h0000;
-    reg lock = 1;
     
-    always_ff @ (posedge clk, negedge rst) begin
-        if (rst == 0) begin
-            my_state <= STATE_0;
-            set <= 0;
-            right <= 0;
-            wrong <= 0;
-            lock <= 1;
+/* Below are FSM for STATE */
+    always_ff @ (posedge CLK, posedge RST) begin
+        if (!RST) begin
+            state <= STATE_0;
         end
         else begin
-            if (mode == 0) begin
-               /* mode = 0: set password */
-               if (my_err == ERR_3) begin
-                    /* Can't set password */
-                    set <= 0;
-                    alarm <= 1;
-                    my_state <= my_state;
-               end
-               else begin
-                   case(my_state) 
-                        STATE_0: begin
-                            password[15:12] <= code;
-                            my_state <= STATE_1;
-                        end
-                        STATE_1: begin
-                            password[11:8] <= code;
-                            my_state <= STATE_2;
-                        end
-                        STATE_2: begin
-                            password[7:4] <= code;
-                            my_state <= STATE_3;
-                        end
-                        STATE_3: begin
-                            password[3:0] <= code;
-                            my_state <= STATE_4;
-                        end
-                        STATE_4: begin
-                            /* We have received the entire password */
-                            if (right == 1 || wrong == 1) begin
-                                /* Switch directly from mode 1 to 0, the set light shouldn't lit up */
-                                set <= 0;
-                            end
-                            else begin
-                                set <= 1;
-                            end
-                        end
-                   endcase
-                end
-            end     
+            case (state)
+                STATE_0: input_password[15:12] <= Code;
+                STATE_1: input_password[11:8] <= Code;
+                STATE_2: input_password[7:4] <= Code;
+                STATE_3: input_password[3:0] <= Code;
+                STATE_4: begin
+                    if (err != ERR_3 && Mode == 0) begin
+                        real_password <= input_password;
+                    end
+                    else begin
+                        real_password <= real_password;
+                    end
+                end 
+            endcase
+            state <= next_state;
+        end
+    end
+    
+// Shift state
+    always_comb begin
+        if (RST) begin
+            case (state)
+                STATE_0: next_state = STATE_1;
+                STATE_1: next_state = STATE_2;
+                STATE_2: next_state = STATE_3;
+                STATE_3: next_state = STATE_4;
+                STATE_4: next_state = STATE_4;
+            endcase
+        end
+        else begin
+            next_state = state;
+        end
+    end
+    
+/* FSM for ERR */
+    always_comb begin
+        if (err == ERR_3) begin
+            if (state == STATE_4 && Mode == 1 && input_password == superpassword ) begin
+                err = ERR_0;
+            end
             else begin
-               /* mode = 1: verify password */
-               case(my_state) 
-                    STATE_0: begin
-                        verify[15:12] <= code;
-                        my_state <= STATE_1;
+                err = err;
+            end
+        end
+        else begin
+            if (state == STATE_4) begin
+                if (Mode == 1) begin
+                    // input_password for verification
+                    if (input_password == real_password) begin
+                        err = ERR_0;
                     end
-                    STATE_1: begin
-                        verify[11:8] <= code;
-                        my_state <= STATE_2;
+                    else begin
+                        /* Change err */
+                        case (err)
+                            ERR_0: err = ERR_1;
+                            ERR_1: err = ERR_2;
+                            ERR_2: err = ERR_3;
+                            ERR_3: err = ERR_3;
+                        endcase 
                     end
-                    STATE_2: begin
-                        verify[7:4] <= code;
-                        my_state <= STATE_3;
-                    end
-                    STATE_3: begin
-                        verify[3:0] <= code;
-                        my_state <= STATE_4;
-                    end
-                    STATE_4: begin
-                        /* We have received the entire password */
-                        if (set == 1) begin
-                            /* Switch directly from mode 1 to 0, the set light shouldn't lit up */
-                            wrong <= 0;
-                            right <= 0;
-                        end
-                        else begin
-                            if (my_err == ERR_3) begin
-                                if (verify == superpassword) begin
-                                    my_err <= ERR_0;
-                                    alarm <= 0;
-                                end
-                                else begin
-                                    alarm <= 1;
-                                    my_err <= ERR_3;
-                                end
-                            end
-                            else begin
-                                if (verify == password) begin
-                                    right <= 1;
-                                    wrong <= 0;
-                                    my_err <= ERR_0;
-                                end
-                                else begin   
-                                    wrong <= 1;
-                                    right <= 0;
-                                    if (lock == 1) begin
-                                        case (my_err)
-                                            ERR_0: my_err <= ERR_1;
-                                            ERR_1: my_err <= ERR_2;
-                                            ERR_2: begin
-                                                my_err <= ERR_3;
-                                                alarm <= 1;
-                                            end
-                                            ERR_3: begin
-                                                my_err <= ERR_3;
-                                                alarm <= 1;
-                                            end
-                                        endcase
-                                        lock <= 0;
-                                    end
-                                    else begin
-                                        my_err <= my_err;
-                                    end
-                                end
-                            end                           
-                        end
-                    end
-               endcase
+                end
+                else begin
+                    // Set the password which doesn't change 
+                    err = err;
+                end
+            end
+            else begin
+                err = err;
             end
         end
     end
+    
+/* Alarm lights */
+    always_comb begin
+        if (err == ERR_3) begin
+            Alarm = 1;
+        end
+        else begin
+            Alarm = 0;
+        end
+    end
+    
+/* Unlock, Err, and Set lights */
+    always_comb begin
+        if (Mode == 1) begin
+            Set = 0;
+            if (state == STATE_4) begin
+                if (((err == ERR_3) && (input_password == superpassword)) || ((err != ERR_3) && (input_password == real_password))) begin
+                    Unlock = 1;
+                    Err = 0;
+                end
+                else begin
+                    Err = 1;
+                    Unlock = 0;
+                end
+            end
+            else begin
+                Unlock = 0;
+                Err = 0;
+            end
+        end
+        else begin
+            Unlock = 0;
+            Err = 0;
+            if ( err != ERR_3 && state == STATE_4 ) begin
+                Set = 1;
+            end
+            else begin
+                Set = 0;
+            end
+        end
+    end
+
 endmodule

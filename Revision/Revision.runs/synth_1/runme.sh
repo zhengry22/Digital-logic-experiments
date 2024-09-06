@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log SuperAdder.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source SuperAdder.tcl
+EAStep vivado -log PasswordLock.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source PasswordLock.tcl
