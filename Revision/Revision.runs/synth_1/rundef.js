@@ -23,7 +23,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log PasswordLock.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source PasswordLock.tcl" );
+         "-log SRAMRW.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source SRAMRW.tcl" );
 
 
 

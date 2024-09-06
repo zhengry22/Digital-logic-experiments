@@ -2,11 +2,11 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Fri Sep  6 10:13:36 2024
-# Process ID: 22452
+# Start of session at: Fri Sep  6 16:57:51 2024
+# Process ID: 23612
 # Current directory: D:/Digital-logic-experiments/Revision/Revision.runs/synth_1
-# Command line: vivado.exe -log PasswordLock.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source PasswordLock.tcl
-# Log file: D:/Digital-logic-experiments/Revision/Revision.runs/synth_1/PasswordLock.vds
+# Command line: vivado.exe -log SRAMRW.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source SRAMRW.tcl
+# Log file: D:/Digital-logic-experiments/Revision/Revision.runs/synth_1/SRAMRW.vds
 # Journal file: D:/Digital-logic-experiments/Revision/Revision.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source PasswordLock.tcl -notrace
+source SRAMRW.tcl -notrace

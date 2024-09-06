@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tfgg484-2" LaunchTime="1725588813">
-  <File Type="PA-TCL" Name="PasswordLock.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="PasswordLock_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="PasswordLock_reports.tcl"/>
-  <File Type="RDS-RDS" Name="PasswordLock.vds"/>
-  <File Type="RDS-UTIL" Name="PasswordLock_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="PasswordLock_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="PasswordLock.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="PasswordLock_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="PasswordLock_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tfgg484-2" LaunchTime="1725613069">
+  <File Type="PA-TCL" Name="SRAMRW.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="SRAMRW_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="SRAMRW_reports.tcl"/>
+  <File Type="RDS-RDS" Name="SRAMRW.vds"/>
+  <File Type="RDS-UTIL" Name="SRAMRW_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="SRAMRW_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="SRAMRW.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="SRAMRW_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="SRAMRW_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/SRAMRW.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SRAM.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/PasswordLock.sv">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -68,7 +84,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="PasswordLock"/>
+      <Option Name="TopModule" Val="SRAMRW"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

@@ -42,6 +42,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .init_design.begin.rst
-EAStep vivado -log PasswordLock.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source PasswordLock.tcl -notrace
+EAStep vivado -log SRAMRW.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source SRAMRW.tcl -notrace
 
 

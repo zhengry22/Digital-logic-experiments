@@ -3,49 +3,65 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="TestFSM_behav.wdb" id="1">
+      <db_ref path="TestSRAMRW_behav.wdb" id="1">
          <top_modules>
-            <top_module name="TestFSM" />
+            <top_module name="TestSRAMRW" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="34105407fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomEndTime time="18410001fs"></ZoomEndTime>
+      <Cursor1Time time="17970000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="206"></NameColumnWidth>
-      <ValueColumnWidth column_width="158"></ValueColumnWidth>
+      <NameColumnWidth column_width="308"></NameColumnWidth>
+      <ValueColumnWidth column_width="287"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
-   <wvobject fp_name="/TestFSM/clk" type="logic">
+   <WVObjectSize size="11" />
+   <wvobject fp_name="/TestSRAMRW/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/TestFSM/clr" type="logic">
-      <obj_property name="ElementShortName">clr</obj_property>
-      <obj_property name="ObjectShortName">clr</obj_property>
+   <wvobject fp_name="/TestSRAMRW/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/TestFSM/in" type="logic">
-      <obj_property name="ElementShortName">in</obj_property>
-      <obj_property name="ObjectShortName">in</obj_property>
+   <wvobject fp_name="/TestSRAMRW/rw" type="logic">
+      <obj_property name="ElementShortName">rw</obj_property>
+      <obj_property name="ObjectShortName">rw</obj_property>
    </wvobject>
-   <wvobject fp_name="/TestFSM/state" type="array">
-      <obj_property name="ElementShortName">state[1:0]</obj_property>
-      <obj_property name="ObjectShortName">state[1:0]</obj_property>
+   <wvobject fp_name="/TestSRAMRW/address" type="array">
+      <obj_property name="ElementShortName">address[3:0]</obj_property>
+      <obj_property name="ObjectShortName">address[3:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TestFSM/fsm/next_state" type="array">
-      <obj_property name="ElementShortName">next_state[2:0]</obj_property>
-      <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
+   <wvobject fp_name="/TestSRAMRW/sram_address" type="array">
+      <obj_property name="ElementShortName">sram_address[17:0]</obj_property>
+      <obj_property name="ObjectShortName">sram_address[17:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TestFSM/fsm/in" type="logic">
-      <obj_property name="ElementShortName">in</obj_property>
-      <obj_property name="ObjectShortName">in</obj_property>
+   <wvobject fp_name="/TestSRAMRW/sram_data" type="array">
+      <obj_property name="ElementShortName">sram_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sram_data[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TestFSM/fsm/exor" type="logic">
-      <obj_property name="ElementShortName">exor</obj_property>
-      <obj_property name="ObjectShortName">exor</obj_property>
+   <wvobject fp_name="/TestSRAMRW/sram_ce_n" type="logic">
+      <obj_property name="ElementShortName">sram_ce_n</obj_property>
+      <obj_property name="ObjectShortName">sram_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestSRAMRW/sram_oe_n" type="logic">
+      <obj_property name="ElementShortName">sram_oe_n</obj_property>
+      <obj_property name="ObjectShortName">sram_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestSRAMRW/sram_we_n" type="logic">
+      <obj_property name="ElementShortName">sram_we_n</obj_property>
+      <obj_property name="ObjectShortName">sram_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestSRAMRW/out_data" type="array">
+      <obj_property name="ElementShortName">out_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">out_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestSRAMRW/state_light" type="array">
+      <obj_property name="ElementShortName">state_light[1:0]</obj_property>
+      <obj_property name="ObjectShortName">state_light[1:0]</obj_property>
    </wvobject>
 </wave_config>

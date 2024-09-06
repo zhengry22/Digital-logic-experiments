@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log PasswordLock.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source PasswordLock.tcl
+EAStep vivado -log SRAMRW.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source SRAMRW.tcl
