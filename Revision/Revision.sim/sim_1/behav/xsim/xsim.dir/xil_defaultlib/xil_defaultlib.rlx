@@ -15,6 +15,6 @@ D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/Decoder.sv,172
 D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/Divider.sv,1724978330,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestCounter.sv,,Divider,,,,,,,,
 D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/FSM.sv,1725548326,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestFSM.sv,,FSM,,,,,,,,
 D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/PasswordLock.sv,1725589758,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestPasswordLock.sv,,PasswordLock,,,,,,,,
-D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SRAM.sv,1725608811,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SRAMRW.sv,,SRAM,,,,,,,,
-D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SRAMRW.sv,1725613369,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestSRAMRW.sv,,SRAMRW,,,,,,,,
+D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SRAM.sv,1725670268,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SRAMRW.sv,,SRAM,,,,,,,,
+D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SRAMRW.sv,1725671623,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestSRAMRW.sv,,SRAMRW,,,,,,,,
 D:/Digital-logic-experiments/Revision/Revision.srcs/sources_1/new/SuperAdder.sv,1724915141,systemVerilog,,D:/Digital-logic-experiments/Revision/Revision.srcs/sim_1/new/TestSuperAdder.sv,,SuperAdder,,,,,,,,

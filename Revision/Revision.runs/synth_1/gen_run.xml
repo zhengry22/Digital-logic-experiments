@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tfgg484-2" LaunchTime="1725613069">
   <File Type="PA-TCL" Name="SRAMRW.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="SRAMRW_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="SRAMRW_reports.tcl"/>
   <File Type="RDS-RDS" Name="SRAMRW.vds"/>
   <File Type="RDS-UTIL" Name="SRAMRW_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="SRAMRW_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="SRAMRW.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="SRAMRW_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="SRAMRW_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/SRAMRW.sv">

@@ -56,40 +56,68 @@ module SRAMRW(
             sram_we_n <= 1;
         end
         else begin
-            case (state)
-                STATE_0: begin
-                    if (rw == 1) begin
-                        sram_address[3:0] <= address;
-                        sram_we_n <= 1;
-                    end
-                    else begin
-                        sram_address[3:0] <= address;
-                        mid[3:0] <= address + 1;
-                        sram_we_n <= 1;
-                    end
+            state <= next_state;
+        end
+    end
+    
+// Handling input from SRAMRW
+    always_comb begin
+        case (state)
+             STATE_0: begin
+                    
                 end
                 STATE_1: begin
-                    if (rw == 1) begin
-                        sram_we_n <= 1;
-                    end
-                    else begin
-                        sram_we_n <= 0;
-                    end
+                    
                 end
                 STATE_2: sram_we_n <= 1;
                 STATE_3:;
             endcase
-            state <= next_state;
-        end
-    end
+    end    
 
 // Handling the shifts
     always_comb begin
         case (state)
-            STATE_0: next_state = STATE_1;
-            STATE_1: next_state = STATE_2;
-            STATE_2: next_state = STATE_3;
-            STATE_3: next_state = STATE_3;
+            STATE_0: begin
+                if (rw == 1) begin
+                    sram_address[3:0] <= address;
+                    sram_we_n <= 1;
+                    next_state = STATE_1;
+                end
+                else begin
+                    sram_address[3:0] <= address;
+                    mid[3:0] <= address + 1;
+                    sram_we_n <= 1;
+                    next_state = STATE_1;
+                end        
+            end 
+            STATE_1: begin
+                if (rw == 1) begin
+                    sram_we_n <= 1;
+                    next_state = STATE_2;
+                end
+                else begin
+                    sram_we_n <= 0;
+                    next_state = STATE_2;
+                end             
+            end 
+            STATE_2: begin
+                if (rw == 1) begin
+                    sram_we_n <= 1;
+                    next_state = STATE_3;
+                end
+                else begin
+                    sram_we_n <= 1;
+                    next_state = STATE_3;
+                end
+            end 
+            STATE_3: begin
+                if (rw == 1) begin
+                    next_state = STATE_3;
+                end
+                else begin
+                    next_state = STATE_3;
+                end
+            end 
         endcase
     end
 

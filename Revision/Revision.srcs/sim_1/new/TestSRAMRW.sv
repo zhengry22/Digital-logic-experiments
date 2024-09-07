@@ -81,6 +81,18 @@ module TestSRAMRW;
         #1000;
         rst = 0;
         
+        // Read data from each address
+        for (int i = 0; i < 16; i = i + 1) begin
+            @(posedge clk);
+            address = i;
+            rw = 1; // Read mode
+            #3000;
+            rst = 1;
+            # 1000;
+            rst = 0;
+            $display("Read data at address %0d: %0d", i, out_data);
+        end
+        
         // Write data to each address
         for (int i = 0; i < 16; i = i + 1) begin
             @(posedge clk);

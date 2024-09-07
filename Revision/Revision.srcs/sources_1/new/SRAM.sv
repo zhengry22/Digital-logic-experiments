@@ -23,9 +23,9 @@
 module SRAM(
     input  wire [17:0] sram_address,
     inout  wire [7:0]  sram_data,
-    input  wire        sram_ce_n,  // Chip enable (active high)
-    input  wire        sram_oe_n,  // Output enable (active high)
-    input  wire        sram_we_n   // Write enable (active high), when 
+    input  wire        sram_ce_n,  // Chip enable (active low)
+    input  wire        sram_oe_n,  // Output enable (active low)
+    input  wire        sram_we_n   // Write enable (active low), when 
     );
 
     // 定义 16 个 8 位的存储单元
@@ -34,7 +34,7 @@ module SRAM(
     initial begin
         integer i;
         for (i = 0; i < 16; i = i + 1) begin
-            store[i] = 8'b0;
+            store[i] = (i + 8);
         end
     end
 
